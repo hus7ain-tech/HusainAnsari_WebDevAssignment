@@ -524,5 +524,95 @@
       </div>
     </footer>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from("h1, p, .flex-wrap, .flex-col.sm\\:flex-row", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    gsap.from("img", {
+      opacity: 0,
+      scale: 0.8,
+      duration: 1,
+      ease: "power2.out",
+      delay: 0.5,
+    });
+
+    gsap.utils
+      .toArray(
+        "#highlights .shadow-\\[6px_6px_0px_rgba\\(0\\,0\\,0\\,0\\.2\\)\\]"
+      )
+      .forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+
+    gsap.from(".bg-\\[\\#FBF7EC\\]", {
+      opacity: 0,
+      x: -100,
+      duration: 1.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".bg-\\[\\#FBF7EC\\]",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.from(".bg-\\[\\#FBF7EC\\] .px-4", {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: ".bg-\\[\\#FBF7EC\\]",
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.utils.toArray(".testimonial-card").forEach((card) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+
+    gsap.from("#cta .bg-white", {
+      opacity: 0,
+      scale: 0.9,
+      duration: 0.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#cta",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+  </script>
 </html>
-```
